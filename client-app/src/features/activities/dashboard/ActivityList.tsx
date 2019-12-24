@@ -3,10 +3,12 @@ import {Button, Item, Label, Segment} from "semantic-ui-react";
 import {IActivity} from "../../../app/models/Activity";
 
 interface IProps {
-    activities: IActivity[]
+    activities: IActivity[];
+    selectActivity: (id:string) => void;
+    deleteActivity: (id: string) => void
 }
 
-const ActivityList : React.FC<IProps> = ({activities}) => {
+const ActivityList : React.FC<IProps> = ({activities, selectActivity, deleteActivity}) => {
     return (
         <Segment clearing>
             <Item.Group divided>
@@ -20,28 +22,14 @@ const ActivityList : React.FC<IProps> = ({activities}) => {
                                 <div>{activity.city}, {activity.venue}</div>
                             </Item.Description>
                             <Item.Extra>
-                                <Button floated={"right"} content={"view"} color={"blue"}/>
+                                <Button onClick={() => selectActivity(activity.id)} floated={"right"} content={"view"} color={"blue"}/>
+                                <Button onClick={() => deleteActivity(activity.id)} floated={"right"} content={"delete"} color={"red"}/>
                                 <Label basic content={'Category'} />
                             </Item.Extra>
                         </Item.Content>
                     </Item>
                 ))}
-               
-                <Item>
-                    <Item.Content>
-                        <Item.Header as='a'>Title</Item.Header>
-                        <Item.Meta>Date</Item.Meta>
-                        <Item.Description>
-                            <div>Description</div>
-                            <div>City, venue</div>
-                        </Item.Description>
-                        <Item.Extra>
-                            <Button floated={"right"} content={"view"} color={"blue"}/>
-                            <Label basic content={'Category'} />
-                        </Item.Extra>
-                    </Item.Content>
-                </Item>
-
+                
             </Item.Group>
         </Segment>
     );

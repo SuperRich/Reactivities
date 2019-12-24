@@ -73,6 +73,7 @@
         <e p="react" t="IncludeRecursive" />
         <e p="react-dom" t="IncludeRecursive" />
         <e p="testing-library__dom" t="IncludeRecursive" />
+        <e p="uuid" t="IncludeRecursive" />
         <e p="yargs-parser" t="IncludeRecursive" />
       </e>
       <e p="client-app\node_modules\@typescript-eslint\experimental-utils" t="IncludeRecursive" />
@@ -109,6 +110,7 @@
       <e p="client-app\node_modules\source-map" t="IncludeRecursive" />
       <e p="client-app\node_modules\typescript" t="IncludeRecursive" />
       <e p="client-app\node_modules\upath" t="IncludeRecursive" />
+      <e p="client-app\node_modules\uuid" t="IncludeRecursive" />
       <e p="client-app\node_modules\worker-farm" t="IncludeRecursive" />
       <e p="Domain" t="IncludeRecursive">
         <e p="Activity.cs" t="Include" />

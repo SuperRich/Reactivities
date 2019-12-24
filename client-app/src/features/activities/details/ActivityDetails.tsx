@@ -1,25 +1,31 @@
 ﻿import React from 'react';
-import {Icon, Card} from "semantic-ui-react";
+import {Card, Image, Button} from "semantic-ui-react";
+import {IActivity} from "../../../app/models/Activity";
 
+interface IProps {
+    activity: IActivity;
+    setEditMode: (editMode: boolean) => void;
+    setSelectedActivity: (activity: IActivity | null) => void;
+}
 
-const ActivityDetails = () => {
+const ActivityDetails : React.FC<IProps> = ({activity, setEditMode, setSelectedActivity}) => {
     return (
-        <Card>
-            <Image src='/images/avatar/large/matthew.png' wrapped ui={false} />
+        <Card fluid>
+            <Image src={`/assets/categoryImages/${activity.category}.jpg`} wrapped ui={false} />
             <Card.Content>
-                <Card.Header>Matthew</Card.Header>
+                <Card.Header>{activity.title}</Card.Header>
                 <Card.Meta>
-                    <span className='date'>Joined in 2015</span>
+                    <span >{activity.date}</span>
                 </Card.Meta>
                 <Card.Description>
-                    Matthew is a musician living in Nashville.
+                    {activity.description}
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <a>
-                    <Icon name='user' />
-                    22 Friends
-                </a>
+                <Button.Group widths={2}>
+                    <Button onClick={() => setEditMode(true)} basic color={"blue"} content={"Edit"} />
+                    <Button onClick={() => setSelectedActivity(null)} basic color={"grey"} content={"Cancel"} />
+                </Button.Group>
             </Card.Content>
         </Card>
     );
