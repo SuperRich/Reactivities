@@ -1,6 +1,6 @@
 ﻿import Axios, {AxiosResponse} from "axios";
 import {IActivity} from "../models/Activity";
-import {act} from "react-dom/test-utils";
+
 
 Axios.defaults.baseURL = 'http://localhost:5000/api';
 
