@@ -47,6 +47,7 @@
       <e p="client-app\node_modules\@babel\parser" t="IncludeRecursive" />
       <e p="client-app\node_modules\@babel\types" t="IncludeRecursive" />
       <e p="client-app\node_modules\@jest\console" t="IncludeRecursive" />
+      <e p="client-app\node_modules\@jest\environment" t="IncludeRecursive" />
       <e p="client-app\node_modules\@jest\fake-timers" t="IncludeRecursive" />
       <e p="client-app\node_modules\@jest\source-map" t="IncludeRecursive" />
       <e p="client-app\node_modules\@jest\test-result" t="IncludeRecursive" />
@@ -91,6 +92,7 @@
       <e p="client-app\node_modules\fast-glob" t="IncludeRecursive" />
       <e p="client-app\node_modules\jest" t="IncludeRecursive" />
       <e p="client-app\node_modules\jest-diff" t="IncludeRecursive" />
+      <e p="client-app\node_modules\jest-environment-jsdom" t="IncludeRecursive" />
       <e p="client-app\node_modules\jest-get-type" t="IncludeRecursive" />
       <e p="client-app\node_modules\jest-haste-map" t="IncludeRecursive" />
       <e p="client-app\node_modules\jest-message-util" t="IncludeRecursive" />
@@ -99,6 +101,8 @@
       <e p="client-app\node_modules\jest-serializer" t="IncludeRecursive" />
       <e p="client-app\node_modules\jest-util" t="IncludeRecursive" />
       <e p="client-app\node_modules\jest-worker" t="IncludeRecursive" />
+      <e p="client-app\node_modules\mobx" t="IncludeRecursive" />
+      <e p="client-app\node_modules\mobx-react-lite" t="IncludeRecursive" />
       <e p="client-app\node_modules\popper.js" t="IncludeRecursive" />
       <e p="client-app\node_modules\pretty-format" t="IncludeRecursive" />
       <e p="client-app\node_modules\react" t="IncludeRecursive" />
@@ -108,6 +112,7 @@
       <e p="client-app\node_modules\realpath-native" t="IncludeRecursive" />
       <e p="client-app\node_modules\semantic-ui-react" t="IncludeRecursive" />
       <e p="client-app\node_modules\source-map" t="IncludeRecursive" />
+      <e p="client-app\node_modules\tslib" t="IncludeRecursive" />
       <e p="client-app\node_modules\typescript" t="IncludeRecursive" />
       <e p="client-app\node_modules\upath" t="IncludeRecursive" />
       <e p="client-app\node_modules\uuid" t="IncludeRecursive" />
