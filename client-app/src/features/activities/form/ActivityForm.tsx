@@ -6,21 +6,16 @@ import ActivityStore from "../../../app/stores/activityStore";
 import {observer} from "mobx-react-lite";
 import { RouteComponentProps } from 'react-router-dom';
 
-
 interface DetailParams {
     id : string;
 }
 
 
-const ActivityForm:React.FC<RouteComponentProps<DetailParams>> = ({match}) => {
+const ActivityForm:React.FC<RouteComponentProps<DetailParams>> = ({match, history}) => {
     const activityStore = useContext(ActivityStore);
-    const {createActivity, editActivity, submitting, cancelFormOpen, activity : initialFormState, loadActivity} = activityStore;
+    const {createActivity, editActivity, submitting, activity : initialFormState, loadActivity, clearActivity} = activityStore;
     
-    useEffect(() => {
-        if (match.params.id) {
-            loadActivity(match.params.id).then(() => initialFormState && setActivity(initialFormState))
-        }
-    });
+    
     
     const [activity, setActivity] = useState<IActivity>({
         id: '',
@@ -31,6 +26,15 @@ const ActivityForm:React.FC<RouteComponentProps<DetailParams>> = ({match}) => {
         city: '',
         venue: ''
     });
+
+    useEffect(() => {
+        if (match.params.id && activity.id.length === 0) {
+            loadActivity(match.params.id).then(() => initialFormState && setActivity(initialFormState))
+        }
+        return () =>  {
+            clearActivity()
+        }
+    },[loadActivity, clearActivity, match.params.id, initialFormState, activity.id.length]);
     
     const handleSubmit = () => {
         if (activity.id.length === 0) {
@@ -38,9 +42,9 @@ const ActivityForm:React.FC<RouteComponentProps<DetailParams>> = ({match}) => {
                 ...activity,
                 id: uuid()
             };
-            createActivity(newActivity);
+            createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`));
         } else {
-            editActivity(activity);
+            editActivity(activity).then(() => history.push(`/activities/${activity.id}`));
         }
     };
     
@@ -59,7 +63,7 @@ const ActivityForm:React.FC<RouteComponentProps<DetailParams>> = ({match}) => {
             <Form.Input onChange={handleInputChange} name='city'  placeholder={'City'} value={activity.city} />
             <Form.Input onChange={handleInputChange} name='venue'  placeholder={'Venue'} value={activity.venue} />
             <Button loading={submitting} floated={"right"} positive type='submit' content='Submit' />
-            <Button onClick={cancelFormOpen} floated={"right"}  type='button' content='Cancel' />
+            <Button onClick={() => history.push('/activities')} floated={"right"}  type='button' content='Cancel' />
         </Form>
         </Segment>
     );
