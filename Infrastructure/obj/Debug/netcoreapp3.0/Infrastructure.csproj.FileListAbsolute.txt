@@ -1,0 +1,15 @@
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Infrastructure.deps.json
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Infrastructure.dll
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Infrastructure.pdb
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Application.dll
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Domain.dll
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Persistence.dll
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Application.pdb
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Domain.pdb
+C:\Reactivities\Infrastructure\bin\Debug\netcoreapp3.0\Persistence.pdb
+C:\Reactivities\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.csprojAssemblyReference.cache
+C:\Reactivities\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Reactivities\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.AssemblyInfo.cs
+C:\Reactivities\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.csproj.CopyComplete
+C:\Reactivities\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.dll
+C:\Reactivities\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.pdb
