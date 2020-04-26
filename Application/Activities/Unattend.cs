@@ -4,14 +4,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Errors;
 using Application.Interfaces;
-using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Activities
 {
-    public class Attend
+    public class Unattend
     {
         public class Command : IRequest
         {
@@ -34,39 +33,38 @@ namespace Application.Activities
 
                 if (activity == null)
                 {
-                    throw new RestException(HttpStatusCode.NotFound, 
-                        new {Activity = "Could not find activity"});
+                    throw new RestException(HttpStatusCode.NotFound, new {Activity = "Could not find activity"});
                 }
-                    
+                  
 
                 var user = await _context.Users.SingleOrDefaultAsync(x => 
                     x.UserName == _userAccessor.GetCurrentUsername());
 
                 var attendance = await _context.UserActivities
-                    .SingleOrDefaultAsync(x => 
-                        x.ActivityId == activity.Id && 
-                        x.AppUserId == user.Id);
+                    .SingleOrDefaultAsync(x => x.ActivityId == activity.Id && 
+                                               x.AppUserId == user.Id);
 
-                if (attendance != null)
+                if (attendance == null)
                 {
-                    throw new RestException(HttpStatusCode.BadRequest, 
-                        new {Attendance = "Already attending this activity"});
+                    return Unit.Value; 
+                }
+
+
+                if (attendance.IsHost)
+                {
+                    throw new RestException(HttpStatusCode.BadRequest, new {Attendance = "You cannot remove yourself as host"});
                 }
                     
 
-                attendance = new UserActivity
-                {
-                    Activity = activity,
-                    AppUser = user,
-                    IsHost = false,
-                    DateJoined = DateTime.Now
-                };
-
-                _context.UserActivities.Add(attendance);
+                _context.UserActivities.Remove(attendance);
 
                 var success = await _context.SaveChangesAsync() > 0;
 
-                if (success) return Unit.Value;
+                if (success)
+                {
+                    return Unit.Value;
+                }
+                   
 
                 throw new Exception("Problem saving changes");
             }
